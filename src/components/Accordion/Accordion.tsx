@@ -3,11 +3,16 @@ export type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
     setCollapsed: (c: boolean)=>void
+    /**
+     * Color of Accordion title text
+     */
+    color?: string
+    onClick?: ()=>void
 }
 export function Accordion(props: AccordionPropsType){
         return (
             <div>
-                <AccordionTitle title={props.titleValue} setCollapsed={props.setCollapsed} collapsed={props.collapsed}/>
+                <AccordionTitle title={props.titleValue} setCollapsed={props.setCollapsed} collapsed={props.collapsed} color={props.color ? props.color: "#000"}/>
                 {!props.collapsed && <AccordionBody title={props.titleValue}/>}
             </div>
         )
@@ -17,11 +22,12 @@ type AccordionTitlePropsType = {
     title: string
     collapsed: boolean
     setCollapsed: (c: boolean)=>void
+    color: string
 }
 function AccordionTitle(props:AccordionTitlePropsType){
     console.log("AccordionTitle rendering")
     return (
-        <h3 onClick={()=>props.setCollapsed(!props.collapsed)}>{props.title}</h3>
+        <h3 onClick={()=>props.setCollapsed(!props.collapsed)} style={{color: props.color ? props.color : "#000"}}>{props.title}</h3>
     )
 }
 function AccordionBody(props:any){

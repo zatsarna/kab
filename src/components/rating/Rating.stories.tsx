@@ -8,10 +8,11 @@ import {action} from '@storybook/addon-actions';
 const meta: Meta<typeof Rating> = {
     title: 'Rating stories',
     component: Rating,
+    tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Rating>;
 
 export const EmptyStar: Story = {
     args: {

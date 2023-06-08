@@ -10,10 +10,11 @@ import {action} from '@storybook/addon-actions';
 const meta: Meta<typeof UnControlledRating> = {
     title: 'UnControlledRating stories',
     component: UnControlledRating,
+    tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof UnControlledRating>;
 
 export const EmptyRating: Story = {
     args: {

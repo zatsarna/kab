@@ -5,7 +5,7 @@ type OnOffProps={
     defaultValue?: boolean
 }
 export const OnOff = (props: OnOffProps) => {
-    let [on, setOn]=useState(false)
+    let [on, setOn]=useState(props.defaultValue ? props.defaultValue : false)
     const onStyle={
         width: "40px",
         height: "20px",

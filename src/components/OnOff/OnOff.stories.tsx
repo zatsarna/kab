@@ -10,10 +10,11 @@ import {action} from '@storybook/addon-actions'
 const meta: Meta<typeof OnOff> = {
     title: 'OnOff st',
     component: OnOff,
+    tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof OnOff>;
 
 
 export const OnMode: Story = {

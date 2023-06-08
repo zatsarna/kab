@@ -8,10 +8,11 @@ import {useState} from 'react';
 const meta: Meta<typeof OnOffControlled> = {
     title: 'OnOff stories',
     component: OnOffControlled,
+    tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof OnOffControlled>;
 
 
 /*export const ModeChanging = ()=> {

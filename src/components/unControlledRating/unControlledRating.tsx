@@ -5,7 +5,7 @@ type UncontrolledRatingProps={
 }
 
 export function UnControlledRating(props: UncontrolledRatingProps) {
-    let [value, setValue]=useState(0)
+    let [value, setValue]=useState(props.defaultValue ? props.defaultValue : 0)
 
         return (
             <div>

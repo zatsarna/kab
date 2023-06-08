@@ -1,9 +1,9 @@
-
+import {ItemsType} from './Accordion';
 import type { Meta, StoryObj } from '@storybook/react';
 import {action} from '@storybook/addon-actions'
 import {Accordion, AccordionPropsType} from './Accordion';
 import {useState} from 'react';
-const  GetCategoryObj =(categoryName: string)=>({
+const  GetCategoryObj =(categoryName: "Color" | "Event" | "Main")=>({
     table: {
         category: categoryName
     }
@@ -19,7 +19,19 @@ const meta : Meta<typeof Accordion> = {
         },
         onClick: {
             ...GetCategoryObj("Event")
-        }
+        },
+        collapsed: {
+            ...GetCategoryObj("Main")
+        },
+        titleValue: {
+            ...GetCategoryObj("Main")
+        },
+        items: {
+            ...GetCategoryObj("Main")
+        },
+        setCollapsed: {
+            ...GetCategoryObj("Event")
+        },
     }
 };
 export default meta;
@@ -51,11 +63,15 @@ export const UnCollapsedMode: Story = {
 }
 export const ModeChanging: Story = (args: AccordionPropsType)=>{
     const [value, setValue]=useState<boolean>(true)
-    return <Accordion {...args} collapsed={value} setCollapsed={setValue}></Accordion>
+    return <Accordion {...args}  collapsed={value} setCollapsed={setValue}></Accordion>
 }
 ModeChanging.args ={
     titleValue: 'NewAcc',
-    color: "red"
+    color: "red",
+    items: [
+        {title: "Dima", value: 1},
+        {title: "Viktor", value: 2}
+    ]
 }
 
 

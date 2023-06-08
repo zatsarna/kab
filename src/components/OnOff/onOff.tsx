@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 
 type OnOffProps={
     onChange: (v: boolean)=>void
+    defaultValue?: boolean
 }
-const OnOff = (props: OnOffProps) => {
+export const OnOff = (props: OnOffProps) => {
     let [on, setOn]=useState(false)
     const onStyle={
         width: "40px",
@@ -44,4 +45,3 @@ const OnOff = (props: OnOffProps) => {
     );
 };
 
-export default OnOff;

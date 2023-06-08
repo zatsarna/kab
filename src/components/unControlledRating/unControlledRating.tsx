@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
+type UncontrolledRatingProps={
+    defaultValue?: 0 |1 |2 |3 |4 |5
+    onChange?: ()=>void
+}
 
-
-export function UnControlledRating() {
+export function UnControlledRating(props: UncontrolledRatingProps) {
     let [value, setValue]=useState(0)
 
         return (

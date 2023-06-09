@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Input>;
 export const UncontrolledInput: Story = {
   args: {},
 };
-export const ControlledInput: Story = {
+export const ControlledInputWithFixedValue: Story = {
   args: {
     value: "it-incubat"
   },
@@ -39,6 +39,28 @@ export const GetValueOfUncontrolledInputOnButtonClick = () =>{
 
   return <><input ref={InputRef}/> <button onClick={onClickHandler}>Save</button> - actual value:{value}</>
 }
-
+export const ControlledInput = ()=>{
+  const [parentValue, setParentValue]=useState("")
+  const onChangeHadler = (event: ChangeEvent<HTMLInputElement>) =>{
+    setParentValue(event.currentTarget.value)
+  }
+  return <input value={parentValue} onChange={onChangeHadler}/>
+}
+export const ControlledCkeckBox = ()=>{
+  const [checked, setChecked]=useState(true)
+    return <input type={'checkbox'} checked={checked} onChange={(e)=>setChecked(e.currentTarget.checked)}/>
+}
+export const ControlledSelect = ()=>{
+  const [parentValue, setParentValue]=useState<string | undefined>(undefined)
+  const onChangeHadler = (event: ChangeEvent<HTMLSelectElement>) =>{
+    setParentValue(event.currentTarget.value)
+  }
+  return <select value={parentValue} onChange={onChangeHadler}>
+    <option>none</option>
+    <option value={"1"}>Kyiv</option>
+    <option value={"2"}>Ukraine</option>
+    <option value={"3"}>USA</option>
+  </select>
+}
 
 

@@ -11,14 +11,14 @@ export type AccordionPropsType = {
      * Color of Accordion title text
      */
     color?: string
-    onClick?: ()=>void
-    items?: ItemsType[]
+    onClick: ()=>void
+    items: ItemsType[]
 }
 export function Accordion(props: AccordionPropsType){
         return (
             <div>
                 <AccordionTitle title={props.titleValue} setCollapsed={props.setCollapsed} collapsed={props.collapsed} color={props.color ? props.color: "#000"}/>
-                {!props.collapsed && <AccordionBody items={props.items ? props.items: []} />}
+                {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
             </div>
         )
 
@@ -36,13 +36,14 @@ function AccordionTitle(props:AccordionTitlePropsType){
     )
 }
 type AccordionBodyProps ={
-    items: ItemsType[] | []
+    items: ItemsType[]
+    onClick: (value: number)=>void
 }
 function AccordionBody(props:AccordionBodyProps){
     console.log("AccordionBody rendering")
     return (
         <ul>
-            {props.items.map(el =><li>{el.title}</li> )}
+            {props.items.map(el =><li key={el.value} onClick={()=> props.onClick(el.value)}>{el.title}</li> )}
         </ul>
     )
 }

@@ -50,7 +50,7 @@ export const CollapsedMode: Story = {
         ...callbackProps,
         collapsed: true,
         titleValue: 'NewAccCollapsed',
-
+        items: []
     },
 };
 export const UnCollapsedMode: Story = {
@@ -58,7 +58,10 @@ export const UnCollapsedMode: Story = {
         ...callbackProps,
         collapsed: false,
         titleValue: 'NewAccUnCollapsed',
-
+        items: [
+            {title: "Dima", value: 1},
+            {title: "Viktor", value: 2}
+        ]
     }
 }
 export const ModeChanging: Story = (args: AccordionPropsType)=>{
@@ -71,7 +74,8 @@ ModeChanging.args ={
     items: [
         {title: "Dima", value: 1},
         {title: "Viktor", value: 2}
-    ]
+    ],
+    onClick: onClickCallback,
 }
 
 

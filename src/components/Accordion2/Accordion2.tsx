@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
+import {reducer} from './Reducer';
+
 type AccordionPropsType = {
     titleValue: string
 }
+
+
+
+
 export function Accordion2(props: AccordionPropsType){
 
-    let [collapsed, setCollapsed]=useState(false)
-    const toggleHandler=()=>setCollapsed(!collapsed)
+   /* let [collapsed, setCollapsed]=useState(false)*/
+    let [state, dispatch]=useReducer(reducer,{collapsed: false})
+    const toggleHandler=()=>dispatch({type: "toggle-collapsed"})
         return (
             <div>
                 <AccordionTitle title={props.titleValue} toggleHandler={toggleHandler}/>
-                {!collapsed && <AccordionBody title={props.titleValue}/>}
+                {!state.collapsed && <AccordionBody title={props.titleValue}/>}
             </div>
         )
 

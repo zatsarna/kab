@@ -6,6 +6,7 @@ import {OnOff} from './components/OnOff/onOff';
 import {UnControlledRating} from './components/unControlledRating/unControlledRating';
 import {Accordion} from './components/Accordion/Accordion';
 import {OnOffControlled} from './components/OnOffControlled/Controlled';
+import CounterHookUseMemo from './components/CounterHookUseMemo/CounterHookMemo';
 
 function App() {
     let [ratingValue, setRatingValue]=useState<ValueType>(0)
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div className={'App'}>
+        <CounterHookUseMemo/>
         <Accordion2 titleValue={'Menu'} />
        {/* <Accordion titleValue={"Menu"} collapsed={collapsed} setCollapsed={setCollapsed}/>*/}
 

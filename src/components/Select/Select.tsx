@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import s from './Select.module.css'
 
-type ItemType ={
+export type ItemType ={
     title: string,
-    value: string
+    value: string,
+    country: "Ukraine" | "USA" | "Poland",
+    populationMln: number
 }
 
 type SelectPropsType={
@@ -12,7 +14,8 @@ type SelectPropsType={
     items: ItemType[]
 }
 
-export function Select(props: SelectPropsType){
+function SelectPrimary(props: SelectPropsType){
+    console.log("Select")
     const [active, setActive]=useState(false)
     const [hoveredEl, setHoveredEl]=useState(props.value)
     const selectedItem=
@@ -59,3 +62,4 @@ export function Select(props: SelectPropsType){
         </div>
     )
 }
+export const Select=React.memo(SelectPrimary)

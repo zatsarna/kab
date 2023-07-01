@@ -1,16 +1,11 @@
 import React, {useCallback, useMemo, useState} from 'react';
-
 export default {
     title: 'UseMemo'
 }
 export const DifficultCountingExample = () => {
-
     const [a, setA] = useState(0)
     const [b, setB] = useState(0)
-
-
     let resultB = 1;
-
     const resultAsaved = useMemo(() => {
         let resultA = 1;
         for (let i = 1; i <= a; i++) {
@@ -23,7 +18,6 @@ export const DifficultCountingExample = () => {
         }
         return resultA
     }, [a])
-
 
     for (let i = 1; i <= b; i++) {
         resultB = resultB * i

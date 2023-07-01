@@ -52,3 +52,49 @@ export const ExampleUseEffect = () => {
         <button onClick={() => setFake(fake+1)}>fake+1</button>
     </>
 }
+
+export const SetTimeoutExampleUseEffect = () => {
+    console.log('SetTimeout Example')
+    const [counter, setCounter] = useState(1);
+    const [fake, setFake] = useState(1);
+//function inside useEffect gets executed only after JSX was displayed on the page
+
+
+    useEffect(()=>{
+        console.log('SetTimeout')
+        //execute function inside SetTimeout in 1 second
+        //setTimeout(()=>{document.title=counter.toString()}, 1000)
+
+        //execute function inside SetInterval every 1 second
+        setInterval(()=>{setCounter(state =>state+1)}, 1000)
+    },[])
+
+
+    return <>
+        counter: {counter}
+        fake: {fake}
+        {/*<button onClick={() => setCounter(counter+1)}>counter+1</button>
+        <button onClick={() => setFake(fake+1)}>fake+1</button>*/}
+    </>
+}
+
+export const ClockExample = () => {
+
+    const [hours, setHours] = useState<any>(null);
+    const [min, setMin] = useState<any>(null);
+    const [sec, setSec] = useState<any>(null);
+
+    useEffect(()=>{
+        setInterval(()=>{
+            setHours(new Date().getHours())
+            setMin(new Date().getMinutes())
+            setSec(new Date().getSeconds())
+        }, 1000)
+    },[])
+
+
+    return <h1>
+        {hours}: {min}:{sec}
+
+    </h1>
+}

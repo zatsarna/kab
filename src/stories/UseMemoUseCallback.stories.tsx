@@ -79,8 +79,7 @@ export const UseMemoLooksLikeUseCallback = () => {
     }, [books])
 
     const memoizedAddBook2=useCallback( ()=>{
-            const newBooks=[...books, 'Angular'+ new Date().getTime()]
-            setBooks(newBooks)
+            setBooks([...books, 'Angular'+ new Date().getTime()])
         }, [books])
 
     return <>
@@ -90,11 +89,9 @@ export const UseMemoLooksLikeUseCallback = () => {
     </>
 }
 
-const BooksSecret = (props: {  addBook: ()=>void }) => {
+const Book = React.memo((props: {  addBook: ()=>void }) => {
     console.log('books secret')
     return <div>
         <button onClick={props.addBook}>add book</button>
     </div>
-}
-
-const Book = React.memo(BooksSecret)
+})

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-
 export default {
     title: 'useEffect demo'
 }
@@ -8,7 +7,7 @@ export const ExampleUseEffect = () => {
     console.log('Example1')
     const [counter, setCounter] = useState(1);
     const [fake, setFake] = useState(1);
-//function inside useEffect gets executed only nafter JSX was displayed on the page
+//function inside useEffect gets executed only after JSX was displayed on the page
 
     //function inside UseEffect gets executed after every component rerender
     useEffect(()=>{
@@ -25,24 +24,12 @@ export const ExampleUseEffect = () => {
     useEffect(()=>{
         console.log('UseEffect first render and at every counter change')
         document.title=counter.toString()
-        //side effects in React
-        //api.getUsers().then('')
-        //setInterval
-        //indexedDB
-        //document.getElementById
-        //document.title='user'
     },[counter])
 
     //function inside UseEffect gets executed only 1 time after first component render
     useEffect(()=>{
         console.log('UseEffect only first render. Equal to Component did mount')
         document.title=counter.toString()
-        //side effects in React
-        //api.getUsers().then('')
-        //setInterval
-        //indexedDB
-        //document.getElementById
-        //document.title='user'
     },[])
 
     return <>
@@ -78,23 +65,3 @@ export const SetTimeoutExampleUseEffect = () => {
     </>
 }
 
-export const ClockExample = () => {
-
-    const [hours, setHours] = useState<any>(null);
-    const [min, setMin] = useState<any>(null);
-    const [sec, setSec] = useState<any>(null);
-
-    useEffect(()=>{
-        setInterval(()=>{
-            setHours(new Date().getHours())
-            setMin(new Date().getMinutes())
-            setSec(new Date().getSeconds())
-        }, 1000)
-    },[])
-
-
-    return <h1>
-        {hours}: {min}:{sec}
-
-    </h1>
-}

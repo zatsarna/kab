@@ -40,7 +40,7 @@ export const ExampleUseEffect = () => {
     </>
 }
 
-export const SetTimeoutExampleUseEffect = () => {
+export const SetIntervalExampleUseEffect = () => {
     console.log('SetTimeout Example')
     const [counter, setCounter] = useState(1);
     const [fake, setFake] = useState(1);
@@ -65,3 +65,66 @@ export const SetTimeoutExampleUseEffect = () => {
     </>
 }
 
+export const ResetEffect = () => {
+    const [counter, setCounter] = useState(1);
+    console.log('Component rendered' + counter)
+
+    useEffect(()=>{
+        console.log(`useEffect ${counter}`)
+//function below will execute when component dies or before function inside useEffect will be re-rendered
+        return ()=>console.log('reset effect' + counter)
+    },[counter])
+
+
+    return <>
+        counter: {counter}
+       <button onClick={()=>setCounter(counter+1)}>Add1</button>
+    </>
+}
+
+export const KeysTracker1 = () => {
+    const [text, setText] = useState('');
+    console.log('Component rendered' + text)
+
+    useEffect(()=>{
+        const keysListener=(e: KeyboardEvent)=>{
+            setText((t)=>t+e.key)
+        }
+    window.addEventListener('keypress', keysListener)
+        return ()=>{
+        window.removeEventListener('keypress', keysListener)
+        }
+    },[])
+
+    return <>Text: {text}</>
+}
+export const KeysTracker2 = () => {
+    const [text, setText] = useState('');
+    console.log('Component rendered' + text)
+
+    useEffect(()=>{
+        const keysListener=(e: KeyboardEvent)=>{
+            setText(text+e.key)
+        }
+        window.addEventListener('keypress', keysListener)
+        return ()=>{
+            window.removeEventListener('keypress', keysListener)
+        }
+    },[text])
+
+    return <>Text: {text}</>
+}
+export const SetTimeoutExampleUseEffect = () => {
+    console.log('SetTimeout Example')
+    const [text, setText] = useState('');
+
+    useEffect(()=>{
+        console.log('SetTimeout')
+        //execute function inside SetTimeout in 1 second
+        const id=setTimeout(()=>{setText(text+'3seconds ')}, 3000)
+
+        return ()=>{clearTimeout(id)}
+    },[text])
+
+    return <>text: {text}</>
+}
